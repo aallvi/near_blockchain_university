@@ -8,6 +8,8 @@ Para esto simplemente debe usar uno de los metodos publicos para consultar la in
 
 Por otro lado, la universidad publica posee registros transparentes sobre las carreras, sus titulados y matriculados.
 
+Si se implementara este proyecto nos ahorramos costos de transaccion, estampillas caras innecesarias, intermediaros arbitrarios, etc.
+
 
 
 
