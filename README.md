@@ -243,3 +243,18 @@ near view dev-1654271483503-62728332196406 getUniversidades
 ```
 
 
+## Mejoras Pendientes
+
+Agregar mas caracteristicas y variables a cada universidad.
+
+Registrar el nombre de cada carrera y no solo el total de carreras.
+Agregar variables estadisticas, tasa de abandono, etc.
+
+Por ahora funciona correctamente al agregar 1 Institucion ya que:
+
+1.Falta agregar una variable a la clase Universidad para poder grabar el nombre de todas las carreras que tenga cada Institucion
+2.Ligar cada carrera y grabarla en la clase anterior
+
+Si se agregan 2 universidades, y agregamos una carrera, como no esta implementado lo anterior, podemos matricular un alumno en una carrera que no existe en la otra universidad (lo cual no deberia pasar),
+ya que por el momento solo estamos contabilizando el total de carreras y no cual carrera en especifico tiene cada una.
+
