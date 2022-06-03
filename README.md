@@ -28,7 +28,7 @@ Creamos una universidad con su nombre y el fundador es la cuenta otorgada, esta 
 
 
 ```sh
-near call dev-1654271483503-62728332196406 setUniversidad '{"nombreInstitucion":"Universidad de Chile"}' --accountId valefape.testnet
+near call dev-1654274924779-14844550986832 setUniversidad '{"nombreInstitucion":"Universidad de Chile"}' --accountId valefape.testnet
 
 ```
 
@@ -41,7 +41,7 @@ near call dev-1654271483503-62728332196406 setUniversidad '{"nombreInstitucion":
  la universidad crea una carrera y la graba en la blockchain
 
 ```sh
-near call dev-1654271483503-62728332196406 setCarrera '{"nombre_carrera":"Arte", "semestres":10, "tipo":"profesional","nombreInstitucion":"Universidad de Chile"}' --accountId valefape.testnet
+near call dev-1654274924779-14844550986832 setCarrera '{"nombre_carrera":"Arte", "semestres":10, "tipo":"profesional","nombreInstitucion":"Universidad de Chile"}' --accountId valefape.testnet
 ```
 
 Es necesario enviar en --accountId la misma cuenta que creo la universidad, solo esta puede grabar carreras.
@@ -54,7 +54,7 @@ Es necesario enviar en --accountId la misma cuenta que creo la universidad, solo
 La universidad certifica que un alumno previamente matriculado finalizo la carrera en cuestion
 
 ```sh
-near call dev-1654271483503-62728332196406 setFinalizado '{"cuenta":"rocolia.testnet","nombre_carrera":"arte","nombreInstitucion":"Universidad de Chile"}' --accountId uchile.testnet
+near call dev-1654274924779-14844550986832 setFinalizado '{"cuenta":"rocolia.testnet","nombre_carrera":"arte","nombreInstitucion":"Universidad de Chile"}' --accountId uchile.testnet
 ```
 
 Es necesario enviar la cuenta de near testnet (sera el alumno titulado), el nombre de la carrera y nombre de la institucion. El nombre de la carrera debe coincidir con la que previamente registro el alumno y con la institucion.
@@ -73,7 +73,7 @@ Es necesario enviar la cuenta de near testnet (sera el alumno titulado), el nomb
 El alumno que desee matricularse debe ejecutar el siguiente comando
 
 ```sh
-near call dev-1654271483503-62728332196406 setAlumno '{"nombre":"seba", "edad":19, "nombre_carrera":"arte","nombreInstitucion":"Universidad de Chile"}' --accountId rocolia.testnet --amount 10
+near call dev-1654274924779-14844550986832 setAlumno '{"nombre":"seba", "edad":19, "nombre_carrera":"arte","nombreInstitucion":"Universidad de Chile"}' --accountId rocolia.testnet --amount 10
 ```
 
 En donde el nombre debe tener mas de 3 caracteres, la edad debe ser mayor a 17, la carrera a la cual quiere ingresar debe ser previamente creada por la institucion al igual que la misma institucion, debe ser creada previamente.
@@ -95,7 +95,7 @@ Consulta por todos los alumnos
 
 
 ```sh
-near view dev-1654271483503-62728332196406 getAlumnos
+near view dev-1654274924779-14844550986832 getAlumnos
 ```
 
 
@@ -106,7 +106,7 @@ near view dev-1654271483503-62728332196406 getAlumnos
 Consulta por 1 alumno en particular enviando su cuenta testnet
 
 ```sh
-near view dev-1654271483503-62728332196406 getAlumno '{"cuenta":"uchile.testnet"}'
+near view dev-1654274924779-14844550986832 getAlumno '{"cuenta":"uchile.testnet"}'
 ```
 
 
@@ -116,7 +116,7 @@ near view dev-1654271483503-62728332196406 getAlumno '{"cuenta":"uchile.testnet"
 Consulta por todas las carreras disponibles 
 
 ```sh
-near view dev-1654271483503-62728332196406 getCarreras
+near view dev-1654274924779-14844550986832 getCarreras
 ```
 
 
@@ -127,7 +127,7 @@ near view dev-1654271483503-62728332196406 getCarreras
 Consulta por una carrera en particular enviando el nombre de esta
 
 ```sh
-near view dev-1654271483503-62728332196406 getCarrera '{"nombre_carrera":"arte"}'
+near view dev-1654274924779-14844550986832 getCarrera '{"nombre_carrera":"arte"}'
 ```
 
 * `getUniversidades`
@@ -136,7 +136,7 @@ Consulta por el estado de las universidades creadas para observar sus estadistic
 
 
 ```sh
-near view dev-1654271483503-62728332196406 getUniversidades
+near view dev-1654274924779-14844550986832 getUniversidades
 ```
 
 
@@ -174,17 +174,17 @@ Ingresamos al archivo neardev/dev-account y copiamos su interior y lo remplazamo
 consultamos por los alumnos y las carreras disponibles (no debiese haber ninguna si es un contrato nuevo)
 
 ```sh
-near view dev-1654271483503-62728332196406 getAlumnos
+near view dev-1654274924779-14844550986832 getAlumnos
 ```
 y
 
 ```sh
-near view dev-1654271483503-62728332196406 getCarreras
+near view dev-1654274924779-14844550986832 getCarreras
 ```
 creamos una carrera
 
 ```sh
-near call dev-1654271483503-62728332196406 setCarrera '{"nombre_carrera":"arte", "semestres":6, "tipo":"profesional","nombreInstitucion":"Universidad de Chile"}' --accountId valefape.testnet
+near call dev-1654274924779-14844550986832 setCarrera '{"nombre_carrera":"arte", "semestres":6, "tipo":"profesional","nombreInstitucion":"Universidad de Chile"}' --accountId valefape.testnet
 ```
 
 
@@ -193,7 +193,7 @@ near call dev-1654271483503-62728332196406 setCarrera '{"nombre_carrera":"arte",
 Vemos las carreras grabadas correctamente
 
 ```sh
-near view dev-1654271483503-62728332196406 getCarreras
+near view dev-1654274924779-14844550986832 getCarreras
 ```
 
 matriculamos un alumno, debe tener mas de 17 anos, colocar un nombre de carrera existente, institucion existente y pagar 10 near
@@ -201,7 +201,7 @@ matriculamos un alumno, debe tener mas de 17 anos, colocar un nombre de carrera 
 
 
 ```sh
-near call dev-1654271483503-62728332196406 setAlumno '{"nombre":"seba", "edad":19, "nombre_carrera":"arte", "nombreInstitucion":"Universidad de Chile"}' --accountId rocolia.testnet --amount 10
+near call dev-1654274924779-14844550986832 setAlumno '{"nombre":"seba", "edad":19, "nombre_carrera":"arte", "nombreInstitucion":"Universidad de Chile"}' --accountId rocolia.testnet --amount 10
 ```
 
 
@@ -210,21 +210,21 @@ Observamos los alumnos, las carreras y universidades
 
 
 ```sh
-near view dev-1654210739011-71072308198195 getAlumnos
+near view dev-1654274924779-14844550986832 getAlumnos
 ```
 
 ```sh
-near view ddev-1654210739011-71072308198195 getCarreras
+near view dev-1654274924779-14844550986832 getCarreras
 ```
 ```sh
-near view dev-1654271483503-62728332196406 getUniversidades
+near view dev-1654274924779-14844550986832 getUniversidades
 ```
 
 titulamos al alumno una vez termine correctamente los estudios
 
 
 ```sh
-near call dev-1654271483503-62728332196406 setFinalizado '{"cuenta":"rocolia.testnet","nombre_carrera":"arte", "nombreInstitucion":"Universidad de Chile"}' --accountId valefape.testnet
+near call dev-1654274924779-14844550986832 setFinalizado '{"cuenta":"rocolia.testnet","nombre_carrera":"arte", "nombreInstitucion":"Universidad de Chile"}' --accountId valefape.testnet
 ```
 
 
@@ -232,15 +232,15 @@ Verificamos que ahora en los alumnos titulados tienen finalizado = true, aumento
 
 
 ```sh
-near view dev-1654210739011-71072308198195 getCarreras
+near view dev-1654274924779-14844550986832 getCarreras
 ```
 
 ```sh
-near view dev-1654210739011-71072308198195 getAlumnos
+near view dev-1654274924779-14844550986832 getAlumnos
 ```
 
 ```sh
-near view dev-1654271483503-62728332196406 getUniversidades
+near view dev-1654274924779-14844550986832 getUniversidades
 ```
 
 
