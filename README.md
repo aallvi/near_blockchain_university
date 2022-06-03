@@ -2,9 +2,11 @@
 
 
 
-El objetivo de este proyecto es que toda persona de esta institucion pueda presentar su titulo en cualquier parte del mundo sin tener que pasar por procesos burotraticos para validar su titulo. Lo anterior, gracias a guardar la informacion en la blockchain
+El objetivo de este proyecto es que toda persona de esta institucion pueda presentar su titulo en cualquier parte del mundo sin tener que pasar por procesos burotraticos para validar su titulo. Lo anterior, gracias a guardar la informacion en la blockchain.
 
-Por otro lado, la universidad posee registros transparentes sobre las carreras, sus titulados y matriculados.
+Para esto simplemente debe usar uno de los metodos publicos para consultar la informacion o consultar por el hash de la transaccion del metodo de finalizacion.
+
+Por otro lado, la universidad publica posee registros transparentes sobre las carreras, sus titulados y matriculados.
 
 
 
@@ -142,7 +144,7 @@ Ingresamos al archivo neardev/dev-account y copiamos su interior y lo remplazamo
 
 
 
-### Métodos para probar su uso despues de hacer lo anterior
+## Métodos para probar su uso despues de hacer lo anterior
 
 
 
