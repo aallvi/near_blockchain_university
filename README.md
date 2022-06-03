@@ -10,7 +10,9 @@ Por otro lado, la universidad publica posee registros transparentes sobre las ca
 
 Si se implementara este proyecto nos ahorramos costos de transaccion, estampillas caras innecesarias, intermediaros arbitrarios, etc.
 
+Eliminamos la posibilidad de falsificar un titulo universitario. Como solo la universidad podría grabar titulados en la blockchain y tanto el publico general como en alumno podría consultarlo según el hash, se eliminaría este delito, ya que es imposible modificar el contrato.
 
+Ademas, como registramos las Universidades con sus carreras y alumnos en la blockchain, se tiene un registro mucho mas transparente sobre variables educacionales de un pais con respecto a las universidades publicas, ya que podríamos observar de manera totalmente transparente muchos de sus datos y de manera mas fácil, en comparación como se hace actualmente que se le pide la información a cada institución por separado y es mucho mas lento, engorroso y manipulable.
 
 
 ## Como funciona
