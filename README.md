@@ -62,7 +62,7 @@ Es necesario enviar la cuenta de near testnet (sera el alumno titulado), el nomb
 
 
 
-### 2.Funciones para la Alumnos:
+### 3.Funciones para la Alumnos:
 
 
 
@@ -82,7 +82,7 @@ El costo de ingresar a la carrera es de 10 near
 
 
 
-### 3.Funciones publicas:
+### 4.Funciones publicas:
 
 
 
