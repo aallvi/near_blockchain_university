@@ -232,11 +232,11 @@ Verificamos que ahora en los alumnos titulados tienen finalizado = true, aumento
 
 
 ```sh
-near view dev-1654210739011-71072308198195 getCarrera '{"nombre_carrera":"arte"}'
+near view dev-1654210739011-71072308198195 getCarreras
 ```
 
 ```sh
-near view dev-1654210739011-71072308198195 getAlumno '{"cuenta":"uchile.testnet"}'
+near view dev-1654210739011-71072308198195 getAlumnos
 ```
 
 ```sh
