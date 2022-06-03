@@ -179,7 +179,8 @@ export function setAlumno(nombre: string, edad: u32, nombre_carrera: string, nom
 
    let carrera = carreras.get(nombre_carrera);
   let universidad = universidades.get(nombreInstitucion);
-
+  
+  
 
 
    if( carrera && universidad  && carrera.nombreInstitucion == nombreInstitucion){
@@ -194,10 +195,10 @@ export function setAlumno(nombre: string, edad: u32, nombre_carrera: string, nom
   let alumno = new Alumno(cuenta, nombre, edad, nombre_carrera, nombreInstitucion);
 
 
-  // transferimos el pago a la cuenta de la Universidad de Chile
+  // transferimos el pago a la cuenta que creo la universidad
 
 
-  ContractPromiseBatch.create("uchile.testnet").transfer(u128.from(10));
+  ContractPromiseBatch.create(universidad.cuenta).transfer(u128.from(10));
 
   // grabamos el alumno
 
