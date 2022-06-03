@@ -1,14 +1,24 @@
 # Universidad Publica en Blockchain
 
+
+
 El objetivo de este proyecto es que toda persona de esta institucion pueda presentar su titulo en cualquier parte del mundo sin tener que pasar por procesos burotraticos para validar su titulo. Lo anterior, gracias a guardar la informacion en la blockchain
 
-Por otro lado, la universidad posee registros transparentes sobre las carreras, sus titulados y matriculados
+Por otro lado, la universidad posee registros transparentes sobre las carreras, sus titulados y matriculados.
+
+
+
 
 ## Como funciona
 
 Dividimos las funciones en 3 partes
 
+
+
+
 ### 1.Funciones para la Universidad:
+
+
 
 * `setCarrera`
 
@@ -19,6 +29,8 @@ near call dev-1654210739011-71072308198195 setCarrera '{"nombre_carrera":"Arte",
 ```
 
 Es necesario enviar en --accountId uchile.testnet ya que es la cuenta de la universidad, y solo esta puede grabar carreras. ( se puede cambiar desde el codigo)
+
+
 
 
 * `setFinalizado`
@@ -32,7 +44,13 @@ near call dev-1654210739011-71072308198195 setFinalizado '{"cuenta":"uchile.test
 Es necesario enviar la cuenta de near testnet y el nombre de la carrera. El nombre de la carrera debe coincidir con la que previamente registro el alumno.
 
 
+
+
+
+
 ### 2.Funciones para la Alumnos:
+
+
 
 * `setAlumno`
 
@@ -47,15 +65,24 @@ En accountId debe ir la cuenta testnet del alumno que se va a matricular
 El costo de ingresar a la carrera es de 10 near
 
 
+
+
+
 ### 3.Funciones publicas:
+
+
 
 * `getAlumnos`
 
 Consulta por todos los alumnos
 
+
+
 ```sh
 near view dev-1654210739011-71072308198195 getAlumnos
 ```
+
+
 
 
 * `getAlumno`
@@ -66,6 +93,8 @@ Consulta por 1 alumno en particular enviando su cuenta testnet
 near view dev-1654210739011-71072308198195 getAlumno '{"cuenta":"uchile.testnet"}'
 ```
 
+
+
 * `getCarreras`
 
 Consulta por todas las carreras disponibles 
@@ -73,6 +102,9 @@ Consulta por todas las carreras disponibles
 ```sh
 near view ddev-1654210739011-71072308198195 getCarreras
 ```
+
+
+
 
 * `getCarrera`
 
@@ -84,20 +116,14 @@ near view dev-1654210739011-71072308198195 getCarrera '{"nombre_carrera":"arte"}
 
 
 
-## Uso
+## Para probar el contrato
 
 ### Compilando y desplegando
 
-Lo primero que debemos hacer es instalar las dependencias necesarias para que el proyecto funcione.
+Instalamos dependencias
 
 ```sh
 npm install
-```
-
-ó
-
-```sh
-yarn install
 ```
 
 Una vez hecho esto, podemos compilar el código.
@@ -106,53 +132,84 @@ Una vez hecho esto, podemos compilar el código.
 npm run build
 ```
 
-ó
-
-```sh
-yarn build
-```
-
-El contrato compilado en WebAssembly se guarda en la carpeta `AssemblyScript/build/release/`. Ahora solo es necesario desplegarlo en una cuenta de desarrollo.
+y despues 
 
 ```sh
 near dev-deploy build/release/contrato.wasm
 ```
 
-### Usando variables de entorno
+Ingresamos al archivo neardev/dev-account y copiamos su interior y lo remplazamos en los siguientes metodos.
 
-Una vez compilado y desplegado tu proyecto, vamos a requerir identificar la cuenta neardev. Esta la puedes encontrar en el archivo `AssemblyScript/neardev/neardev`. Podemos almacenar este contrato en una variable de entorno ejecutando lo siguiente en la consola, y sustituyendo por tu cuenta de desarrollo:
+
+
+### Métodos para probar su uso despues de hacer lo anterior
+
+
+
+consultamos por los alumnos y las carreras disponibles (no debiese haber ninguna si es un contrato nuevo)
 
 ```sh
-export CONTRATO=dev-0000000000000-000000000
+near view dev-1654210739011-71072308198195 getAlumnos
 ```
-
-Haciendo esto, podemos comprobar que la variable `CONTRATO` tiene almacenada nuestra cuenta dev.
+y
 
 ```sh
-echo $CONTRATO
+near view dev-1654210739011-71072308198195 getCarreras
 ```
-
-### Métodos
-
-Lo primero que debemos hacer es registrar al menos un usuario en el contrato. Para esto utilizamos el método `setParticipante`. Este método requiere que se pague 1 NEAR para poder ser ejecutado. El método registra a la persona que lo está ejecutando como participante.
+creamos un par de carreras
 
 ```sh
-near call $CONTRATO setParticipante '{"nombre":"Nombre Participante","edad":18}' --accountId tucuenta.testnet --amount 1
-```
-
-Ahora que tenemos al menos 1 participante, podemos utilizar los métodos de lectura. `getParticipante` nos traerá la información específica de un participante dependiendo la cuenta que le enviemos como parámetro. Por otro lado, `getParticipantes` nos trae la lista de todos los participantes registrados.
-
-```sh
-near view $CONTRATO getParticipante '{"cuenta":"cuenta.testnet"}'
+near call dev-1654210739011-71072308198195 setCarrera '{"nombre_carrera":"arte", "semestres":6, "tipo":"profesional"}' --accountId uchile.testnet
 ```
 
 ```sh
-near view $CONTRATO getParticipantes
+near call dev-1654210739011-71072308198195 setCarrera '{"nombre_carrera":"redes", "semestres":6, "tipo":"tecnica"}' --accountId uchile.testnet
 ```
 
-Por último, si queremos marcar como certificado a uno de los participantes registrados, podemos hacer uso del método `setCertificado`. Este método tiene una restricción en la que, si tu cuenta no es `aklassen.testnet` especificamente no te permitirá ejecutarlo. Esta es una forma de agregar una restricción a cuentas específicas. Puedes modificar esta cuenta en el código del contrato. Además, el método transfiere una compensación de 5 NEAR al participante por haber logrado su certificación.
+
+Vemos las carreras grabadas correctamente
 
 ```sh
-near call $CONTRATO setCertificado '{"cuenta":"cuenta.testnet"}' --accountId cuenta.testnet
+near view dev-1654210739011-71072308198195 getCarreras
 ```
+
+matriculamos un alumno, debe tener mas de 17 anos, colocar un nombre de carrera existente y pagar 10 near
+
+
+
+```sh
+near call dev-1654210739011-71072308198195 setAlumno '{"nombre":"seba", "edad":19, "nombre_carrera":"arte"}' --accountId uchile.testnet --amount 10
+```
+
+
+
+Observamos los alumnos y las carreras
+
+
+```sh
+near view dev-1654210739011-71072308198195 getAlumnos
+```
+
+```sh
+near view ddev-1654210739011-71072308198195 getCarreras
+```
+
+titulamos al alumno una vez termine correctamente los estudios
+
+
+```sh
+near call dev-1654210739011-71072308198195 setFinalizado '{"cuenta":"uchile.testnet","nombre_carrera":"arte"}' --accountId uchile.testnet
+```
+
+
+Verificamos que ahora en finalizado = true y aumento el numero de titulados en la carrera en cuestion.
+
+```sh
+near view dev-1654210739011-71072308198195 getCarrera '{"nombre_carrera":"arte"}'
+```
+
+```sh
+near view dev-1654210739011-71072308198195 getAlumno '{"cuenta":"uchile.testnet"}'
+```
+
 
