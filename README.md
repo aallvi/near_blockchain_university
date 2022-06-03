@@ -251,11 +251,7 @@ Agregar mas caracteristicas y variables a cada Universidad.
 Registrar el nombre de cada carrera y no solo el total de carreras.
 Agregar variables estadisticas, tasa de abandono, etc.
 
-Por ahora funciona correctamente al agregar 1 Institucion ya que:
+Por ahora funciona correctamente al agregar carreras diferentes en cada institucion, ya que como en el key de carreras esta actualmente con el nombre, si colocamos 'arte' 2 veces y son de universidades distintas, la sobreescribira, hay que hacer una modificacion ahi.
 
-1.Falta agregar una variable a la clase Universidad para poder grabar el nombre de todas las carreras que tenga cada Institucion
-2.Ligar cada carrera y grabarla en la clase anterior
 
-Si se agregan 2 universidades, y agregamos una carrera, como no esta implementado lo anterior, podemos matricular un alumno en una carrera que no existe en la otra universidad (lo cual no deberia pasar),
-ya que por el momento al agregar la carrera, solo estamos comprobando que esta exista y no verificando a que Universidad pertenece, esto ya que solo estamos contabilizando el total de carreras y no cual carrera en especifico tiene cada una.
 
