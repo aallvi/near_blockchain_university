@@ -228,9 +228,8 @@ near call dev-1654271483503-62728332196406 setFinalizado '{"cuenta":"rocolia.tes
 ```
 
 
-Verificamos que ahora en finalizado = true y aumento el numero de titulados en la carrera en cuestion.
+Verificamos que ahora en los alumnos titulados tienen finalizado = true, aumento el numero de titulados en la carrera en cuestion y tambien cambiaron las estadisticas de las universidades.
 
-Estadisticas de la universidad tambien cambiaron.
 
 ```sh
 near view dev-1654210739011-71072308198195 getCarrera '{"nombre_carrera":"arte"}'

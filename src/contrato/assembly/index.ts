@@ -24,10 +24,6 @@ class Universidad {
 
 
 
-
-
-
-
 @nearBindgen
 class Alumno {
   cuenta: string;
@@ -79,7 +75,7 @@ const universidades = new PersistentUnorderedMap<string, Universidad>("u");
 export function setUniversidad(nombreInstitucion: string, ): void {
 
   
-
+  // la cuenta creadora sera el accountId
 
   const cuenta = context.sender
 
@@ -146,6 +142,7 @@ export function setCarrera(nombre_carrera: string, semestres: u32, tipo: string,
 
   // guardamos la carrera y la universidad le aumentamos la cantidad de carreras
 
+  
   carreras.set(nombre_carrera, carrera);
   universidades.set(nombreInstitucion, universidad);
 
@@ -184,7 +181,8 @@ export function setAlumno(nombre: string, edad: u32, nombre_carrera: string, nom
   let universidad = universidades.get(nombreInstitucion);
 
 
-   if( carrera && universidad ){
+
+   if( carrera && universidad  && carrera.nombreInstitucion == nombreInstitucion){
      universidad.totalMatriculados++
 
     // evaluamo su edad, nombre y el pago que realiza que deben ser 10 near
